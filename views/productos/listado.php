@@ -1,3 +1,4 @@
+<!-- CÓDIGO DE EJEMPLO EN EL PROYECTO BASE -->
 <h1>Listado de Productos</h1>
 <p><a href="?controller=producto&action=create">Crear producto</a></p>
 

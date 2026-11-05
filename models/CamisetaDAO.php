@@ -1,3 +1,4 @@
+<!-- CÓDIGO DE EJEMPLO EN EL PROYECTO BASE -->
 <?php
 include_once("config/dataBase.php");
 include_once("models/Camiseta.php");

@@ -1,0 +1,1 @@
+<!-- Controlador para páginas de error (404) -->

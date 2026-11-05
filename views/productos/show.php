@@ -1,3 +1,4 @@
+<!-- CÓDIGO DE EJEMPLO EN EL PROYECTO BASE -->
 <h1>Detalle del producto</h1>
 <p><a href="?controller=producto">Volver al listado</a></p>
 

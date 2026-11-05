@@ -1,3 +1,4 @@
+<!-- CÓDIGO DE EJEMPLO EN EL PROYECTO BASE -->
 <?php
 include_once("config/parameters.php");
 

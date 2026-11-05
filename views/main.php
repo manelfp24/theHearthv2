@@ -1,3 +1,4 @@
+<!-- CÓDIGO DE EJEMPLO EN EL PROYECTO BASE -->
 <!DOCTYPE html>
 <html lang="es">
 

@@ -1,0 +1,1 @@
+<!-- Modelo para consultar productos y categorías en la BBDD -->

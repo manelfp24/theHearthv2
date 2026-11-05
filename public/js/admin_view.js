@@ -1,0 +1,1 @@
+// Gestión de vistas dinámicas sin recargar la página
