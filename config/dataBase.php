@@ -1,11 +1,12 @@
+<!-- Conexión a la base de datos -->
 <?php
 
 class DataBase
 {
     private const DB_HOST = '127.0.0.1';
     private const DB_USER = 'root';
-    private const DB_PASS = ''; // <-- pon aquí tu contraseña de root
-    private const DB_NAME = 'thehearth_v2';
+    private const DB_PASS = ''; // <-- pon aquí tu contraseña de root (no le pongo por el momento)
+    private const DB_NAME = 'thehearth_v2'; // <-- nombre de la bbdd en PHPMyAdmin
 
     public static function connect(
         $host = self::DB_HOST,

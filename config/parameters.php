@@ -1,4 +1,6 @@
+<!-- Constantes globales (URL base, controlador por defecto, etc.) -->
 <?php
-define("url", "http://localhost:8000/"); //definimos la url base del proyecto
-define("default_controller", "producto");
-define("default_action", "index");
+// Constantes globales del proyecto (ajustadas a tu subcarpeta en XAMPP)
+define("BASE_URL", "http://localhost:8000/");
+define("DEFAULT_CONTROLLER", "Home");
+define("DEFAULT_ACTION", "index");

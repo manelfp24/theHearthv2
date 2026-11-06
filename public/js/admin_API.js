@@ -1,0 +1,1 @@
+// Peticiones asíncronas (fetch/axios) contra la API de PHP

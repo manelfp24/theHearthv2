@@ -2,7 +2,7 @@
 
 Este directorio contiene el script SQL completo para la creación, estructuración y población de la base de datos relacional del sistema de pedidos web y TPV de **"The Hearth"**.
 
-Encontrarás credenciales de usuarios de prueba al final de este documento.
+**Encontrarás credenciales de usuarios de prueba al final de este documento.**
 
 ## 📊 Organización y Propósito de la Base de Datos
 
