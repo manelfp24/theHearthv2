@@ -1,1 +1,0 @@
-<!-- Cabecera HTML común para todas las vistas de la web. -->

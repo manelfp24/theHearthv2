@@ -23,7 +23,7 @@ function showError($code, $message)
 
 // Si no se pasa un controlador por URL, redirigimos al controlador por defecto
 if (!isset($_GET['controller'])) {
-    header("Location: " . url . "?controller=" . default_controller);
+    header("Location: " . BASE_URL . "?controller=" . DEFAULT_CONTROLLER);
     exit;
 }
 
@@ -54,7 +54,7 @@ $controller = new $nombre_controller();
 
 // Determinamos qué método (action) se debe ejecutar dentro del controlador.
 // Si no se especifica ninguna por URL, cogemos la acción por defecto ('index') definida en parameters.php.
-$action = default_action;
+$action = DEFAULT_ACTION;
 if (isset($_GET['action']) && $_GET['action'] !== '') {
     $action = $_GET['action'];
 }
