@@ -71,13 +71,13 @@ $result_drinks = $conn->query($sql_drinks);
 
         <div class="carousel-nav-container">
             <div class="carousel-nav-pill">
-                //Pasar la función a archivo JS más adelante
+                <!-- Pasar la función a archivo JS más adelante -->
                 <button class="nav-arrow-btn" onclick="scrollCuts('left', 'cutsTrack')">
                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="black" stroke-width="2">
                         <path d="M10 2L2 10L10 18" />
                     </svg>
                 </button>
-                //Pasar la función a archivo JS más adelante
+                <!-- Pasar la función a archivo JS más adelante -->
                 <button class="nav-arrow-btn" onclick="scrollCuts('right', 'cutsTrack')">
                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="black" stroke-width="2">
                         <path d="M2 2L10 10L2 18" />
@@ -144,13 +144,13 @@ $result_drinks = $conn->query($sql_drinks);
 
         <div class="carousel-nav-container">
             <div class="carousel-nav-pill">
-                //Pasar la función a archivo JS más adelante
+                <!-- Pasar la función a archivo JS más adelante -->
                 <button class="nav-arrow-btn" onclick="scrollCuts('left', 'drinksTrack')">
                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="black" stroke-width="2">
                         <path d="M10 2L2 10L10 18" />
                     </svg>
                 </button>
-                //Pasar la función a archivo JS más adelante
+                <!-- Pasar la función a archivo JS más adelante -->
                 <button class="nav-arrow-btn" onclick="scrollCuts('right', 'drinksTrack')">
                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="black" stroke-width="2">
                         <path d="M2 2L10 10L2 18" />
