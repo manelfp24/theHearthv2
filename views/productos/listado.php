@@ -55,11 +55,10 @@ if (isset($allProducts) && is_array($allProducts)) {
             <?php foreach ($display_titles as $db_type => $title):
                 if (isset($category_images[$db_type])):
                     $img_path = BASE_URL . $category_images[$db_type];
-                    $custom_style = ($db_type === 'Seafood') ? 'padding: 15px;' : '';
                     ?>
                     <a href="#section-<?= $db_type ?>" class="cat-nav-item text-decoration-none text-center">
                         <div class="cat-thumb mb-3">
-                            <img src="<?= $img_path ?>" alt="<?= $title ?>" style="<?= $custom_style ?>">
+                            <img src="<?= $img_path ?>" alt="<?= $title ?>">
                         </div>
                         <span class="cat-title"><?= $title ?></span>
                     </a>
@@ -68,6 +67,7 @@ if (isset($allProducts) && is_array($allProducts)) {
         </div>
     </div>
 </section>
+
 
 <?php
 // Filtramos para mostrar solo las secciones que realmente contienen productos
