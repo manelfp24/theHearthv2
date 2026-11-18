@@ -5,9 +5,7 @@ include_once("models/ProductDAO.php");
 include_once("models/Food.php");
 include_once("models/Drink.php");
 
-class ProductController
-{
-    private const CATEGORIAS_VALIDAS = ['Meats', 'Seafood', 'Sides', 'Beverages', 'Wines', 'Spirits', 'Desserts'];
+class ProductController{
 
     public function index()
     {

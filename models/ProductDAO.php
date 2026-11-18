@@ -6,97 +6,114 @@ include_once("models/Drink.php");
 
 class ProductDAO
 {
+    //función para mostrar conseguir todos los productos de la tabla productos en la bbdd
     public static function getAll()
     {
         $con = DataBase::connect();
-        // Hacemos el JOIN para traer también el nombre de la categoría y saber si es bebida o comida
+        // Hacemos una consulta SQL para buscar los productos que están disponibles (active = 1)
+        // y le añadimos JOIN para saber su categoría y saber si es bebida o comida
         $stmt = $con->prepare("
             SELECT p.*, c.name as product_type 
             FROM products p 
             INNER JOIN categories c ON p.category_id = c.id 
             WHERE p.active = 1
         ");
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $stmt->execute(); //lanzamos la consulta a la bbdd
+        $result = $stmt->get_result(); //nos devuelve el resultado
 
-        $productos = [];
+        //abrimos un array vacío donde guardaremos los resultados
+        $products = [];
+        //devuelve arrays asociativos con el bucle y fetch_assoc() y los mete en $products
         while ($row = $result->fetch_assoc()) {
-            // Evaluamos si es bebida/vino/licor para instanciar la clase hija correspondiente
-            $tipoCat = strtolower($row['product_type']);
-            $className = in_array($tipoCat, ['beverages', 'wines', 'spirits']) ? 'Drink' : 'Food';
+            // Evaluamos el la categoría para instanciar la clase hija correspondiente
+            $categoryType = strtolower($row['product_type']);
+            $className = in_array($categoryType, ['beverages', 'wines', 'spirits']) ? 'Drink' : 'Food';
             
-            $producto = new $className();
-            $producto->setProductId($row['id']);
-            $producto->setCategoryId($row['category_id']);
-            $producto->setName($row['name']);
-            $producto->setDescription($row['description']);
-            $producto->setBasePrice((float)$row['price']);
-            $producto->setProductType($row['product_type']);
-            $producto->setImage($row['image']);
-            $producto->setActive($row['active']);
+            //creamos un objeto del tipo Drink/Food según $className
+            $product = new $className();
+            //le metemos estas propiedades al objeto que acabamos de crear con los setters
+            $product->setProductId($row['id']);
+            $product->setCategoryId($row['category_id']);
+            $product->setName($row['name']);
+            $product->setDescription($row['description']);
+            $product->setBasePrice((float)$row['price']);
+            $product->setProductType($row['product_type']);
+            $product->setImage($row['image']);
+            $product->setActive($row['active']);
 
-            $productos[] = $producto;
+            //guardamos las propiedades de $product en el array $products
+            $products[] = $product;
         }
 
+        //cerramos la sentencia sql y cerramos la conexión a la bbdd
         $stmt->close();
         $con->close();
 
-        return $productos;
+        //devolvemos el array completo tras el bucle
+        return $products;
     }
 
-    public static function getById($id)
-    {
+    //función para conseguir un producto específico según su ID
+    public static function getById($id){
         $con = DataBase::connect();
+        //buscamos lo mismo que antes pero en el where buscamos el ID del producto que queremos
         $stmt = $con->prepare("
             SELECT p.*, c.name as product_type 
             FROM products p 
             INNER JOIN categories c ON p.category_id = c.id 
             WHERE p.id = ?
         ");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
 
-        $producto = null;
+        $stmt->bind_param("i", $id); //bindeamos $id
+        $stmt->execute(); //lanzamos la consulta a la bbdd
+        $result = $stmt->get_result(); //nos devuelve el resultado
+
+        //lo dejamos en null porque solo necesitamos uno
+        $product = null;
+        //como solo necesitamos 1 producto, usamos if
         if ($row = $result->fetch_assoc()) {
-            $tipoCat = strtolower($row['product_type']);
-            $className = in_array($tipoCat, ['beverages', 'wines', 'spirits']) ? 'Drink' : 'Food';
+            $categoryType = strtolower($row['product_type']);
+            $className = in_array($categoryType, ['beverages', 'wines', 'spirits']) ? 'Drink' : 'Food';
 
-            $producto = new $className();
-            $producto->setProductId($row['id']);
-            $producto->setCategoryId($row['category_id']);
-            $producto->setName($row['name']);
-            $producto->setDescription($row['description']);
-            $producto->setBasePrice((float)$row['price']);
-            $producto->setProductType($row['product_type']);
-            $producto->setImage($row['image']);
-            $producto->setActive($row['active']);
+            $product = new $className();
+            $product->setProductId($row['id']);
+            $product->setCategoryId($row['category_id']);
+            $product->setName($row['name']);
+            $product->setDescription($row['description']);
+            $product->setBasePrice((float)$row['price']);
+            $product->setProductType($row['product_type']);
+            $product->setImage($row['image']);
+            $product->setActive($row['active']);
         }
 
+        //cerramos la sentencia sql y cerramos la conexión a la bbdd
         $stmt->close();
         $con->close();
 
-        return $producto ?: null;
+        //si hay $product lo devuelve, sino null
+        return $product ?: null;
     }
 
-    public static function store($producto)
+    //función para guardar un nuevo producto
+    public static function store($product)
     {
         $con = DataBase::connect();
         $stmt = $con->prepare("INSERT INTO products (category_id, name, description, price, image, active) VALUES (?, ?, ?, ?, ?, 1)");
 
-        $category_id = $producto->getCategoryId();
-        $nombre = $producto->getName();
-        $descripcion = $producto->getDescription();
-        $precio = $producto->getBasePrice();
-        $imagen = $producto->getImage();
+        $category_id = $product->getCategoryId();
+        $name = $product->getName();
+        $description = $product->getDescription();
+        $price = $product->getBasePrice();
+        $image = $product->getImage();
 
-        $stmt->bind_param("issds", $category_id, $nombre, $descripcion, $precio, $imagen);
+        $stmt->bind_param("issds", $category_id, $name, $description, $price, $image);
         $stmt->execute();
 
         $stmt->close();
         $con->close();
     }
 
+    //funcion para borrar un producto según si ID
     public static function destroy($id)
     {
         $con = DataBase::connect();

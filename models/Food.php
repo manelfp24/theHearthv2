@@ -5,7 +5,7 @@ class Food extends Product
 {
     // Implementación del método abstracto
     public function getDetails() {
-        return "Plato / Corte de comida: " . $this->name . " | Precio base: $" . $this->price;
+        return "Dish: " . $this->name . " | Base price: $" . $this->price;
     }
 }
 ?>

@@ -1,17 +1,29 @@
  <?php
 
-abstract class Product
-{
+ /**
+ * Clase abstracta base para los productos del restaurante. 
+ * Agrupa los atributos y métodos comunes y define la estructura 
+ * que obligatoriamente implementarán las clases hijas (Food y Drink).
+ */
+
+abstract class Product{
+
+    //usamos protected para que la clase tenga los datos seguros pero aún así
+    //las clases hijas food y drinks puedan acceder a estos.
     protected $id;
     protected $category_id;
     protected $name;
     protected $description;
     protected $price;
-    protected $product_type; // guardamos el nombre de la categoría (Meats, Wines, etc.)
+    // Propiedad auxiliar (no existe como columna en la tabla de la BBDD, 
+    // la rellenamos con un JOIN para saber la categoría, instanciar Food o Drink 
+    // y pintar la vista sin hacer consultas extra). -->
+    protected $product_type;
     protected $image;
     protected $active;
 
-    // Método abstracto (Polimorfismo)
+    // Declaramos un método abstracto en la clase madre y las hijas se verán obligadas a usarlo,
+    //aunque sea de forma diferente (Polimorfismo)
     abstract public function getDetails();
 
     // GETTERS Y SETTERS COMUNES
